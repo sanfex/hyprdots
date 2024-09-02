@@ -1,0 +1,160 @@
+{
+    "layer": "top",
+    "position": "top",
+    "margin": "6 6 0 6",
+    "modules-left": [
+        // "custom/launcher",
+        "hyprland/workspaces",
+        "custom/custom_text",
+        "custom/updates",
+        "custom/wallpaper"
+        // "cpu",
+        // "memory",
+        // "temperature",
+        // "disk",
+        // "custom/updates"
+    ],
+    "modules-center": [
+        // "custom/music"
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "clock#calendar",
+        "clock",
+        "network",
+        "pulseaudio",
+        "tray"
+        // "custom/weather",
+        // "custom/cycle_wall",
+        // "custom/clipboard",
+        // "custom/power"
+        // "custom/custom"
+    ],
+
+    "hyprland/workspaces": {
+        // "format": "{icon} {name}",
+        "format": "{name}",
+        "sort-by-number": true,
+        "on-scroll-up": "hyprctl dispatch workspace e-1",
+        "on-scroll-down": "hyprctl dispatch workspace e+1",
+        "on-click": "activate",
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": []
+        }
+    },
+
+    "tray": {
+        "icon-size": 15,
+        "spacing": 10
+    },
+
+    "clock": {
+        "timezone": "Europe/Madrid",
+        "format": "{:%H:%M}  ",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode" : "year",
+            "mode-mon-col" : 3,
+            "weeks-pos" : "right",
+            "on-scroll" : 1,
+            "format": {
+                "months": "<span color='#b4befe'><b>{}</b></span>",
+                "days": "<span color='#b4befe'><b>{}</b></span>",
+                "weeks": "<span color='#89b4fa'><b>W{}</b></span>",
+                "weekdays": "<span color='#89b4fa'><b>{}</b></span>",
+                "today": "<span color='#f5e0dc'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions":  {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        },
+        "interval": 60
+    },
+
+    "clock#calendar": {
+        "timezone": "Europe/Madrid",
+        "format": "{:%d/%m/%Y}  ",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode" : "year",
+            "mode-mon-col" : 3,
+            "weeks-pos" : "right",
+            "on-scroll" : 1,
+            "format": {
+                "months": "<span color='#b4befe'><b>{}</b></span>",
+                "days": "<span color='#b4befe'><b>{}</b></span>",
+                "weeks": "<span color='#89b4fa'><b>W{}</b></span>",
+                "weekdays": "<span color='#89b4fa'><b>{}</b></span>",
+                "today": "<span color='#f5e0dc'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions":  {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        },
+        "interval": 86400
+    },
+
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format": "{icon} {bandwidthTotalBytes}",
+        "format-disconnected": "{icon} No Internet",
+        "format-alt": " {bandwidthUpBytes} |  {bandwidthDownBytes}",
+        "format-icons": {
+            "ethernet": "↕",
+            "disconnected": "⚠"
+        },
+        "interval": 10,
+        "tooltip": false
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}% ",
+        "format-muted": "",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "qpwgraph",
+        "tooltip": false
+    },
+
+    "custom/custom_text": {
+        "format": "自由だ",
+        "on-click": "mpv $HOME/.config/waybar/scripts/output.wav",
+        "tooltip": false
+    },
+
+    "custom/wallpaper": {
+        "format": "",
+        "on-click": "$HOME/.config/swww/scripts/select_next.sh",
+        "on-click-right": "$HOME/.config/swww/scripts/select_previous.sh",
+        "on-click-middle": "waypaper &",
+        "tooltip": false
+    },
+
+    "custom/updates": {
+        "format": " {}",
+        "exec": "checkupdates | wc -l",
+        "on-click": "alacritty --class updater -e sudo pacman -Syu",
+        "interval": 3600,
+        "tooltip": false
+    }
+}

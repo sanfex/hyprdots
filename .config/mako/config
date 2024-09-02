@@ -1,0 +1,18 @@
+background-color=#0c0e14
+text-color=#cdd6f4
+border-color=#394161
+border-radius=8
+padding=8
+
+height=150
+width=300
+
+default-timeout=5000
+max-visible=10
+
+on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message.oga
+
+[urgency=critical]
+background-color=#1e1e2e
+text-color=#f2cdcd
+default-timeout=0
